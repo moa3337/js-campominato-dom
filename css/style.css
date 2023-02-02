@@ -1,0 +1,29 @@
+.container{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+#grid{
+    width: 1000px;
+    height: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.square{
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    cursor: pointer;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.square.active{
+    background-color: aquamarine;
+}
+.square.bomb{
+    background-color: red;
+}
+.square.normal{
+    background-color: ;
+}
