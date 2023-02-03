@@ -9,10 +9,15 @@
 // AGGANCIO DEL BOTTONE TRAMITE id DAL HTML
 const button = document.getElementById("generate");
 
+// DICHIARO UN CONTATORE PER RACCOGLIERE IL PUNTEGGIO
+let score = 0;
+
 // CREO L'EVENTO AL "CLICK" DEL BOTTONE
 button.addEventListener(
     "click", 
     function () {
+
+        // AGGANCIO AL DIV DEL HTML
         const grid = document.getElementById("grid")
         generateGrid(grid);
     }
@@ -23,10 +28,12 @@ function generateGrid(grid) {
 
     // RESET DELLA GRIGLIA DOPO UN NUOVO "CLICK"
     grid.innerHTML = "";
+
     let i = 0;
     // CICLO PER CREARE LE 100 CASELLE DELLA GRIGLIA:
     for (let i = 1; i <= 100; i++) {
         const testo = i + 1;
+
         // CREO UN DIV CON NOME SQUARE PER LE CASELLE
         const square = document.createElement("div");
         
@@ -44,26 +51,35 @@ function generateGrid(grid) {
                 // SE LA CASELLA CONTIENE UN "numberBomb" COLORA DI ROSSO
                 if (numberBomb.includes(i)) {
                     square.classList.add("bomb");
-                  // ALTRIMENTI COLORA NORMALMENTE  
+
+                    // E STAMPO IL PUNTEGGIO FATTO DALL'UTENTE
+                    console.log("GAME OVER! hai aftto " + score + " punti");
+                  
+                    // ALTRIMENTI COLORA NORMALMENTE E CONTA I PUNTI 
                 } else {
-                    this.classList.add("active");
-                }
-                // USO IL "this" PER AGGANCIARMI A OGNI SINGOLA CELLA
-                //this.classList.toggle("active");   
+                    this.classList.add("active"); score++;
+                }  
 
                 // QUANDO CLICCO SU UNO SQUARE STAMPALO IN CONSOLE
-                 console.log("casella selezionata n°:" + i);
+                console.log("casella selezionata n°:" + i);
             });
             grid.append(square);
         }   
+
+        // ARRAY PER I NUMERI CASUALI CHE CONTERRANNO LE BOMBE
         const numberBomb = []
+
+        // CICLO "while" PER GENERARE 16 NUMERI/BOMBE CASUALI
         while (numberBomb.length < 16) {
             randomNumber = Math.floor(Math.random() * 100) + 1;
 
+            // SE 1 DEI NUMERI GENERATI E' GIA' PRESENTE 
+            // SALTA IL CICLO E' CREANE 1 NUOVO
             if (!numberBomb.includes(randomNumber)) {
                 numberBomb.push(randomNumber);
             }
         }
+        // STAMPO IN CONSOLE IL NUMERO/BOMBA
         console.log(numberBomb);
     }
 
