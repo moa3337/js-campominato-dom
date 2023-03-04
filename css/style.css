@@ -4,23 +4,32 @@
     justify-content: center;
 }
 #grid{
+    height: 900px;
     width: 1000px;
-    height: 1000px;
     display: flex;
     flex-wrap: wrap;
+    gap: 2px;
 }
 .square{
-    width: calc(100% / 10);
+    background-color: cadetblue;
+    width: calc(100% / 10 - 2px);
     height: calc(100% / 10);
-    cursor: pointer;
-    border: 1px solid;
-    display: flex;
     justify-content: center;
     align-items: center;
+    display: flex;
+    cursor: pointer;
+    border-radius: 10px;
 }
 .square.active{
-    background-color: aquamarine;
+    background-color: chartreuse;
 }
 .square.bomb{
     background-color: red;
+}
+#generate{
+    background-color: cornflowerblue;
+    border-radius: 8px;
+    color: aliceblue;
+    padding: 7px;
+    margin: 5px 12px;
 }
